@@ -1,0 +1,65 @@
+[versions]
+
+apachePOI = "5.2.5"
+fastexcel = "0.16.6"
+jakarta = "2.0.1"
+javalin = "6.0.1"
+jodaTime = "2.12.6"
+jte = "3.1.9"
+jwt = "4.4.0"
+kotest = "5.8.0"
+kotestExtArbs = "2.1.2"
+kotestExtPitest = "1.2.0"
+kotestExtDateTime = "1.1.0"
+kotlin = "1.9.20"
+kotlinSerialization = "1.6.2"
+kotlinxHtml = "0.11.0"
+logback = "1.4.14"
+logstash = "6.6"
+markdown = "0.6.1"
+openPdf = "1.3.39"
+platformsh = "2.2.3"
+reflections = "0.10.2"
+shadow = "8.1.1"
+slf4j = "2.0.9"
+versions = "3.1.4"
+
+[libraries]
+
+apachePOI = { module = "org.apache.poi:poi", version.ref = "apachePOI" }
+fastexcelCore = { module = "org.dhatim:fastexcel", version.ref = "fastexcel" }
+fastexcelReader = { module = "org.dhatim:fastexcel-reader", version.ref = "fastexcel" }
+jakartaMail = { module = "com.sun.mail:jakarta.mail", version.ref = "jakarta" }
+jakartaSMTP = { module = "com.sun.mail:smtp", version.ref = "jakarta" }
+javalinCore = { module = "io.javalin:javalin", version.ref = "javalin" }
+javalinRendering = { module = "io.javalin:javalin-rendering", version.ref = "javalin" }
+jodaTime = { module = "joda-time:joda-time", version.ref = "jodaTime" }
+jte = { module = "gg.jte:jte", version.ref = "jte" }
+jteKotlin = { module = "gg.jte:jte-kotlin", version.ref = "jte" }
+jwt = { module = "com.auth0:java-jwt", version.ref = "jwt" }
+kotestAssertions = { module = "io.kotest:kotest-assertions-core", version.ref = "kotest" }
+kotestJunit5 = { module = "io.kotest:kotest-runner-junit5-jvm", version.ref = "kotest" }
+kotestPitest = { module = "io.kotest.extensions:kotest-extensions-pitest", version.ref = "kotestExtPitest" }
+kotestProperty = { module = "io.kotest:kotest-property", version.ref = "kotest" }
+kotestPropertyArbs = { module = "io.kotest.extensions:kotest-property-arbs", version.ref = "kotestExtArbs" }
+kotestPropertyDateTime = { module = "io.kotest.extensions:kotest-property-datetime", version.ref = "kotestExtDateTime" }
+kotlinSerialization = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinSerialization" }
+kotlinxHtml = { module = "org.jetbrains.kotlinx:kotlinx-html-jvm", version.ref = "kotlinxHtml" }
+logbackClassic = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
+logbackCore = { module = "ch.qos.logback:logback-core", version.ref = "logback" }
+logstash = { module = "net.logstash.logback:logstash-logback-encoder", version.ref = "logstash" }
+markdown = { module = "org.jetbrains:markdown", version.ref = "markdown" }
+openPdf = { module = "com.github.librepdf:openpdf", version.ref = "openPdf" }
+platformshConfig = { module = "sh.platform:config", version.ref = "platformsh" }
+reflections = { module = "org.reflections:reflections", version.ref = "reflections" }
+slf4j = { module = "org.slf4j:slf4j-api", version.ref = "slf4j" }
+slf4jlLog4j = { module = "org.slf4j:log4j-over-slf4j", version.ref = "slf4j" }
+
+[bundles]
+
+excel = ["apachePOI", "fastexcelCore", "fastexcelReader"]
+jakarta = ["jakartaMail", "jakartaSMTP"]
+javalin = ["javalinCore", "javalinRendering"]
+jte = ["jte", "jteKotlin"]
+kotest = ["kotestJunit5", "kotestAssertions", "kotestProperty", "kotestPropertyArbs", "kotestPropertyDateTime"]
+logs = ["slf4j", "logstash", "logbackClassic", "logbackCore"]
