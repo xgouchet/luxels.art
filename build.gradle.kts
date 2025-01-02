@@ -51,7 +51,7 @@ tasks.test {
 }
 
 kotlin {
-    jvmToolchain(11)
+    jvmToolchain(17)
     compilerOptions {
         allWarningsAsErrors.set(true)
     }
@@ -60,12 +60,23 @@ kotlin {
 buildConfig {
     val format = SimpleDateFormat("yy.MM.dd").apply { timeZone = TimeZone.getTimeZone("UTC") }
     val date = format.format(Date())
-    val hash = ByteArrayOutputStream().let { stdout ->
-        rootProject.exec {
-            commandLine("git", "rev-parse", "--short", "HEAD")
-            standardOutput = stdout
+    val treeId = System.getenv("PLATFORM_TREE_ID")
+    val hash = if (treeId.isNullOrBlank()) {
+        try {
+            ByteArrayOutputStream().let { stdout ->
+                rootProject.exec {
+                    commandLine("git", "rev-parse", "--short", "HEAD")
+                    standardOutput = stdout
+                }
+                stdout.toString().trim()
+            }
+
+        } catch (e: Exception) {
+            e.printStackTrace()
+            "???"
         }
-        stdout.toString().trim()
+    } else {
+        treeId
     }
 
     buildConfigField("APP_VERSION", date)

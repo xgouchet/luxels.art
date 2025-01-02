@@ -1,0 +1,27 @@
+name: 'app'
+type: 'java:17'
+
+# Mounts define directories that are writable after the build is complete.
+mounts:
+  'storage':
+    source: local
+    source_path: storage
+
+# The size of the persistent disk of the application (in MB).
+disk: 2048
+
+# The hooks that will be triggered when the package is deployed.
+hooks:
+  # Build hooks can modify the application files on disk but not access any services like databases.
+  build: |
+    ./gradlew shadowJar
+
+# The configuration of the application when it is exposed to the web.
+web:
+  commands:
+    start:
+      java -jar $JAVA_OPTS build/libs/luxels.art-1.0-SNAPSHOT-all.jar --server.port=$PORT
+  upstream:
+    socket_family: tcp
+    protocol: http
+
