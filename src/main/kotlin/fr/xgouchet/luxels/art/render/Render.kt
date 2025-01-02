@@ -68,8 +68,8 @@ fun BODY.bodyHeader() {
             ul { li { a(href = "/") { strong { +"Luxels.art" } } } }
             ul {
                 li { a(href = "/history") { +"History" } }
-                li { a(href = "/gallery") { +"Gallery" } }
-                li { a(href = "/about") { +"About…" } }
+//                li { a(href = "/gallery") { +"Gallery" } }
+//                li { a(href = "/about") { +"About…" } }
             }
         }
     }

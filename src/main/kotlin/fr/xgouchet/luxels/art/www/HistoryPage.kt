@@ -6,7 +6,9 @@ import io.javalin.http.Context
 import io.javalin.http.HandlerType
 import kotlinx.html.a
 import kotlinx.html.blockQuote
+import kotlinx.html.br
 import kotlinx.html.cite
+import kotlinx.html.code
 import kotlinx.html.div
 import kotlinx.html.em
 import kotlinx.html.footer
@@ -17,6 +19,7 @@ import kotlinx.html.header
 import kotlinx.html.hr
 import kotlinx.html.iframe
 import kotlinx.html.img
+import kotlinx.html.li
 import kotlinx.html.p
 import kotlinx.html.script
 import kotlinx.html.section
@@ -24,6 +27,7 @@ import kotlinx.html.style
 import kotlinx.html.sub
 import kotlinx.html.sup
 import kotlinx.html.title
+import kotlinx.html.ul
 
 class HistoryPage : Route {
 
@@ -31,7 +35,7 @@ class HistoryPage : Route {
     override val method: HandlerType = HandlerType.GET
 
     override fun handle(ctx: Context) {
-        ctx.htmlPage("Index") {
+        ctx.htmlPage("History") {
 
             header {
                 hGroup {
@@ -71,9 +75,43 @@ class HistoryPage : Route {
                     +", a contraction between the words “algorithm” and “artist”."
                 }
 
+                p{
+                    +"The Algorists group included artists such as Jean-Pierre Hébert, Ken Musgrave, Roman Verostko, "
+                    +"Mark Wilson, Manfred Mohr, Hiroshi Kawano and many others. "
+                    +"The definition of Algorist was given by J.-P. Hébert in 1995 in the form of an algorithm, stating "
+                    +"that an Algorist should fulfill the following requirements:"
+                }
+
+                ul{
+                    li{ +"they should create something new;" }
+                    li{ +"the creation should have some artistic quality;" }
+                    li{ +"the creation must be the result of an algorithm;" }
+                    li{ +"the algorithm must have been written by the algorist themselves." }
+                }
+
+                blockQuote {
+                    code {
+                        +"if (creation && object of art && algorithm && one's own algorithm) {"
+                        br()
+                        +"include * an algorist *"
+                        br()
+                        +"} elseif (!creation || !object of art || !algorithm || !one's own algorithm) {"
+                        br()
+                        +"exclude * not an algorist *"
+                        br()
+                        +"}"
+                    }
+                    footer {
+                        cite { +"- Jean-Pierre Hébert, 1995" }
+                    }
+                }
+
                 p {
                     +"During my studies in Computer Graphics and Virtual Reality in the mid 2000s, I met a french group "
-                    +"of Algorists, and started playing with ways to generate art based on algorithmic logic."
+                    +"of Algorists, and started playing with ways to generate art based on algorithmic logic. We used to "
+                    +"meet once a month, exchanging over our projects, and brainstorming ideas. At the time, we already "
+                    +"had discussions about whether or not AI could do something artistic (a very philosophical question, "
+                    +"and to this day unanswered)."
                 }
             }
 
@@ -109,7 +147,9 @@ class HistoryPage : Route {
 
                 p {
                     +"The image that resulted became almost as famous as the Mandlebrot Set itself, and Lori Gardi, "
-                    +"another computer artist, coined the name “Buddhabrot”, hinting at the similarity between the "
+                    +"another computer artist, coined the name "
+                    a(href = "https://superliminal.com/fractals/bbrot/") { +"“Buddhabrot”" }
+                    +", hinting at the similarity between the "
                     +"image and the traditional representation of Buddha."
                 }
                 div {
@@ -119,7 +159,7 @@ class HistoryPage : Route {
                     }
                     p {
                         style = "text-align:center;"
-                        em { +"Aether" }
+                        em { +"Buddhabrot" }
                         +" — Melinda Green, 1993"
                     }
                 }
@@ -127,7 +167,7 @@ class HistoryPage : Route {
             }
 
             section {
-                header { h3 { +"The first experiments" } }
+                header { h3 { +"The first experiments: 2008-2011" } }
                 p {
                     +"When I started playing with "
                     a(href = "https://processing.org/") { +"Processing" }
@@ -157,11 +197,24 @@ class HistoryPage : Route {
                         +" — Xavier F. Gouchet, 2008"
                     }
                 }
+
+
+                div {
+                    img(src = "/img/history/2009_pixie_dust.jpg") {
+                        style = "display: block; margin: auto; object-fit: cover;"
+                        width = "640"
+                    }
+                    p {
+                        style = "text-align:center;"
+                        em { +"Luxels: Pixie Dust" }
+                        +" — Xavier F. Gouchet, 2009"
+                    }
+                }
                 footer { hr() }
             }
 
             section {
-                header { h3 { +"The first period: 2009-2016" } }
+                header { h3 { +"The first period: 2012-2016" } }
                 p {
                     +"When I thought of writing another series based on the same principle, I realised that I needed "
                     +"more structure. I wrote a first version of my engine in Processing (so it was mostly Java based) "
@@ -198,6 +251,100 @@ class HistoryPage : Route {
                 p {
                     +"Along the years, I experimented with many different rules, trying to come up algorithmically with "
                     +"the pictures I had in mind, sometimes successfully, sometimes not."
+                }
+
+                footer { hr() }
+            }
+
+            section {
+                header { h3 { +"The second period: 2017-2023" } }
+                p {
+                    +"In 2017, the Processing framework felt like a constraint, and I wanted to allow more out of the "
+                    +"Luxels concept. I decided it was time to write my own engine from scratch (ish)."
+                }
+
+                p {
+                    +"That same year, Kotlin started to get some traction, especially in the Android community (which is "
+                    +"where I make a living). Google announced first class citizen support for the language, and "
+                    +"along with a few colleagues, I started to play with that language."
+                }
+
+                p {
+                    +"This lead to a logical conclusion. Why note write my Luxels engine in Kotlin. It would allow me "
+                    +"more flexibility, and also give me a project to learn Kotlin. As I worked on that core engine, I "
+                    +"kept working on new series, among which "
+                    em { +"Aura" }
+                    +" was published."
+                }
+
+                div {
+                    img(src = "/img/history/2017_aura.jpg") {
+                        style = "display: block; margin: auto; object-fit: cover;"
+                        width = "640"
+                    }
+                    p {
+                        style = "text-align:center;"
+                        em { +"Luxels: Aura" }
+                        +" — Xavier F. Gouchet, 2017"
+                    }
+                }
+
+
+                p {
+                    +"I kept on working on those experiments, on an off. Some series never passed the draft stage, "
+                    +"others would not reach a satisfying result, and are kept as "
+                    em { +"work-in-progress-that-I-will-work-on-again-probably" }
+                    +". I did eventually released another series from that period, named "
+                    em { +"Smoke" }
+                    +"."
+                }
+
+                div {
+                    img(src = "/img/history/2021_smoke.jpg") {
+                        style = "display: block; margin: auto; object-fit: cover;"
+                        width = "640"
+                    }
+                    p {
+                        style = "text-align:center;"
+                        em { +"Luxels: Smoke" }
+                        +" — Xavier F. Gouchet, 2021"
+                    }
+                }
+
+                footer { hr() }
+            }
+
+            section {
+                header { h3 { +"The third period: 2024-…" } }
+                p {
+                    +"In 2024, I realised that my Kotlin engine, although much better than my original Processing scripts, "
+                    +"still had room for improvement. The language itself had evolved, and my knowledge of it too. "
+                    +"I decided to make a luxel engine, Mark 3 if you will, with a couple of global objectives."
+                }
+
+                p {
+                    +"First, it had to give me room to experiment and play with the concept of Luxels, and make new "
+                    +"series. Hopefully with more ease to bring to the digital world the images I have in my mind."
+                }
+
+                p {
+                    +"Second, it had to follow best practices in terms of coding. Better structure, automated tests, "
+                    +"strict static analysis, everything that I use in my daily job, and is often forgotten in pet "
+                    +"projects. Also, to make things more complex, I decided to make it as a Kotlin Multiplatform "
+                    +"project. The idea being that I could eventually decline it as a website sandbox (similar to "
+                    a(href="https://www.shadertoy.com/") { +"Shadertoy" }
+                    +"), or as an Android live wallpaper application."
+                }
+
+                p {
+                    +"Third, I decided to make the whole thing completely Open Source. I've been an Open Source "
+                    +"afficionado since my first year learning about programming, and I've contributed to countless "
+                    +"project. Sharing is caring, and I'd be delighted if some people could make things out of the "
+                    +"Luxel engine I share. "
+                }
+
+                p{
+                    +"The adventure is just starting, and I'm thrilled to see what's coming next."
                 }
 
                 footer { hr() }
