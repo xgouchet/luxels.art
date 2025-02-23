@@ -22,8 +22,7 @@ class IndexPage : Route {
     override val method: HandlerType = HandlerType.GET
 
     override fun handle(ctx: Context) {
-        ctx.htmlPage("Home") {
-
+        ctx.htmlPage("Luxels - Home") {
             header {
                 hGroup {
                     h1 { +"“Luxels”" }
@@ -32,9 +31,8 @@ class IndexPage : Route {
             }
 
             section {
-
                 div {
-                    img(src = "/img/home/home.jpg") {
+                    img(src = "/image/home/home.jpg") {
                         style = "display: block; margin: auto; object-fit: cover;"
                         width = "640"
                     }

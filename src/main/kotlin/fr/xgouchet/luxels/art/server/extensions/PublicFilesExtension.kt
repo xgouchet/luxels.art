@@ -15,7 +15,7 @@ class PublicFilesExtension : JavalinExtension {
             staticFiles.precompress = true
             staticFiles.headers = mapOf(Header.CACHE_CONTROL to "max-age=${TTL.inWholeSeconds}")
         }
-//        config.staticFiles.add("public")
+        config.staticFiles.add("public", Location.EXTERNAL)
     }
 
     override fun onPrepare(javalin: Javalin) {

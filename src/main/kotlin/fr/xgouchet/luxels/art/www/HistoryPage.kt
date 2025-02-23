@@ -28,6 +28,7 @@ import kotlinx.html.sub
 import kotlinx.html.sup
 import kotlinx.html.title
 import kotlinx.html.ul
+import kotlin.text.Typography.nbsp
 
 class HistoryPage : Route {
 
@@ -35,7 +36,7 @@ class HistoryPage : Route {
     override val method: HandlerType = HandlerType.GET
 
     override fun handle(ctx: Context) {
-        ctx.htmlPage("History") {
+        ctx.htmlPage("Luxels - History") {
 
             header {
                 hGroup {
@@ -75,29 +76,29 @@ class HistoryPage : Route {
                     +", a contraction between the words “algorithm” and “artist”."
                 }
 
-                p{
+                p {
                     +"The Algorists group included artists such as Jean-Pierre Hébert, Ken Musgrave, Roman Verostko, "
                     +"Mark Wilson, Manfred Mohr, Hiroshi Kawano and many others. "
                     +"The definition of Algorist was given by J.-P. Hébert in 1995 in the form of an algorithm, stating "
                     +"that an Algorist should fulfill the following requirements:"
                 }
 
-                ul{
-                    li{ +"they should create something new;" }
-                    li{ +"the creation should have some artistic quality;" }
-                    li{ +"the creation must be the result of an algorithm;" }
-                    li{ +"the algorithm must have been written by the algorist themselves." }
+                ul {
+                    li { +"they should create something new;" }
+                    li { +"the creation should have some artistic quality;" }
+                    li { +"the creation must be the result of an algorithm;" }
+                    li { +"the algorithm must have been written by the algorist themselves." }
                 }
 
                 blockQuote {
                     code {
                         +"if (creation && object of art && algorithm && one's own algorithm) {"
                         br()
-                        +"include * an algorist *"
+                        +"$nbsp $nbsp include * an algorist *"
                         br()
                         +"} elseif (!creation || !object of art || !algorithm || !one's own algorithm) {"
                         br()
-                        +"exclude * not an algorist *"
+                        +"$nbsp $nbsp exclude * not an algorist *"
                         br()
                         +"}"
                     }
@@ -153,7 +154,7 @@ class HistoryPage : Route {
                     +"image and the traditional representation of Buddha."
                 }
                 div {
-                    img(src = "/img/history/buddhabrot.png") {
+                    img(src = "/image/history/buddhabrot.png") {
                         style = "display: block; margin: auto; object-fit: cover;"
                         width = "640"
                     }
@@ -187,26 +188,29 @@ class HistoryPage : Route {
                     +"just playing around with a new toy I wrote by myself."
                 }
                 div {
-                    img(src = "/img/history/2008_aether.jpg") {
+                    img(src = "/image/history/2008_aether.jpg") {
                         style = "display: block; margin: auto; object-fit: cover;"
                         width = "640"
                     }
                     p {
                         style = "text-align:center;"
-                        em { +"Aether" }
+                        em { a(href = "/gallery/aether") { +"Aether" } }
                         +" — Xavier F. Gouchet, 2008"
                     }
                 }
 
 
                 div {
-                    img(src = "/img/history/2009_pixie_dust.jpg") {
+                    img(src = "/image/history/2009_pixie_dust.jpg") {
                         style = "display: block; margin: auto; object-fit: cover;"
                         width = "640"
                     }
                     p {
                         style = "text-align:center;"
-                        em { +"Luxels: Pixie Dust" }
+                        em {
+                            +"Luxels: "
+                            a(href="/gallery/pixie-dust") { +"Pixie Dust" }
+                        }
                         +" — Xavier F. Gouchet, 2009"
                     }
                 }
@@ -243,7 +247,10 @@ class HistoryPage : Route {
                     script(src = "https://player.vimeo.com/api/player.js") {}
                     p {
                         style = "text-align:center;"
-                        em { +"Luxels: Gravity" }
+                        em {
+                            +"Luxels: "
+                            a(href="/gallery/gravity") { +"Gravity" }
+                        }
                         +" — Xavier F. Gouchet, 2012"
                     }
                 }
@@ -278,13 +285,16 @@ class HistoryPage : Route {
                 }
 
                 div {
-                    img(src = "/img/history/2017_aura.jpg") {
+                    img(src = "/image/history/2017_aura.jpg") {
                         style = "display: block; margin: auto; object-fit: cover;"
                         width = "640"
                     }
                     p {
                         style = "text-align:center;"
-                        em { +"Luxels: Aura" }
+                        em {
+                            +"Luxels: "
+                            a(href="/gallery/aura") { +"Aura" }
+                        }
                         +" — Xavier F. Gouchet, 2017"
                     }
                 }
@@ -300,13 +310,16 @@ class HistoryPage : Route {
                 }
 
                 div {
-                    img(src = "/img/history/2021_smoke.jpg") {
+                    img(src = "/image/history/2021_smoke.jpg") {
                         style = "display: block; margin: auto; object-fit: cover;"
                         width = "640"
                     }
                     p {
                         style = "text-align:center;"
-                        em { +"Luxels: Smoke" }
+                        em {
+                            +"Luxels: "
+                            a(href="/gallery/smoke") { +"Smoke" }
+                        }
                         +" — Xavier F. Gouchet, 2021"
                     }
                 }
@@ -332,7 +345,7 @@ class HistoryPage : Route {
                     +"strict static analysis, everything that I use in my daily job, and is often forgotten in pet "
                     +"projects. Also, to make things more complex, I decided to make it as a Kotlin Multiplatform "
                     +"project. The idea being that I could eventually decline it as a website sandbox (similar to "
-                    a(href="https://www.shadertoy.com/") { +"Shadertoy" }
+                    a(href = "https://www.shadertoy.com/") { +"Shadertoy" }
                     +"), or as an Android live wallpaper application."
                 }
 
@@ -343,7 +356,7 @@ class HistoryPage : Route {
                     +"Luxel engine I share. "
                 }
 
-                p{
+                p {
                     +"The adventure is just starting, and I'm thrilled to see what's coming next."
                 }
 
