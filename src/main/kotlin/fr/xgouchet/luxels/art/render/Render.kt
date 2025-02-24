@@ -29,6 +29,7 @@ import kotlinx.html.style
 import kotlinx.html.title
 import kotlinx.html.ul
 import kotlinx.html.unsafe
+import kotlin.text.Typography.nbsp
 
 inline fun Context.htmlPage(
     pageTitle: String,
@@ -134,17 +135,30 @@ fun BODY.bodyFooter() {
                     }
                 }
                 p {
-                    small { +"GitHub" }
+                    small {
+                        img(classes = "icon", src = "/image/home/github.png")
+                        +"${nbsp}GitHub"
+                    }
                     br()
-                    small { a(href = "https://github.com/xgouchet/luxel-engine") { +"Luxel Engine" } }
+                    small {
+                        a(href = "https://github.com/xgouchet/luxel-engine") { +"Luxel Engine" }
+                    }
                     br()
-                    small { a(href = "https://github.com/xgouchet/luxels.art") { +"Luxels.art " } }
+                    small {
+                        a(href = "https://github.com/xgouchet/luxels.art") { +"Luxels.art " }
+                    }
                 }
 
                 p {
                     small { +"Contact" }
                     br()
-                    small { a(href = "https://pixelfed.art/luxels") { +"Pixelfed" } }
+                    small {
+                        img(classes = "icon", src = "/image/home/pixelfed.png")
+                        +"$nbsp"
+                        a(href = "https://pixelfed.art/luxels") {
+                            +"Pixelfed"
+                        }
+                    }
                     // TODO contact form
                 }
             }
