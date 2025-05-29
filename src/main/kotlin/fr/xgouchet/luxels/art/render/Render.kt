@@ -18,6 +18,7 @@ import kotlinx.html.img
 import kotlinx.html.li
 import kotlinx.html.link
 import kotlinx.html.main
+import kotlinx.html.meta
 import kotlinx.html.nav
 import kotlinx.html.p
 import kotlinx.html.script
@@ -39,8 +40,10 @@ inline fun Context.htmlPage(
     html(
         buildString {
             append("<!DOCTYPE HTML>\n")
+
             appendHTML(prettyPrint = Configuration.isLocal(), xhtmlCompatible = false).html {
                 attributes["data-theme"] = "dark"
+                attributes["lang"] = "en"
                 head {
                     htmlHead(pageTitle)
                 }
@@ -61,6 +64,8 @@ inline fun Context.htmlPage(
 }
 
 fun HEAD.htmlHead(pageTitle: String) {
+    meta(charset = "utf-8")
+
     title { +pageTitle }
 
     // Pico CSS / Jade theme
